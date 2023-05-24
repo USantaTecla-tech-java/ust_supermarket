@@ -1,0 +1,79 @@
+@startuml
+
+interface ConsoleInterface {
+  + String readString(String)
+	+ int readInt(String)
+	+ double readDouble(String)
+	+ char readChar(String)
+	+ void write(String)
+	+ void write(int)
+	+ void write(double)
+	+ void write(char)
+	+ void write(boolean)
+	+ void writeln()
+	+ void writeln(String)
+	+ void writeln(int)
+	+ void writeln(double)
+	+ void writeln(char)
+	+ void writeln(boolean)
+}
+
+
+class Console implements ConsoleInterface {
+	- BufferedReader bufferedReader
+	+ String readString(String)
+	+ int readInt(String)
+	+ double readDouble(String)
+	+ char readChar(String) 
+	+ void write(String)
+	+ void write(int)
+	+ void write(double)
+	+ void write(char)
+	+ void write(boolean) 
+	+ void writeln()
+	+ void writeln(String)
+	+ void writeln(int) 
+	+ void writeln(double) 
+	+ void writeln(char)
+	+ void writeln(boolean)
+	- void writeError(String)
+}
+
+abstract class DecoratorConsole implements ConsoleInterface {
+  - ConsoleInterface next;
+  ~ DecoratorConsole(ConsoleInterface console)
+  + String readString(String)
+  + int readInt(String)
+  + double readDouble(String)
+  + char readChar(String)
+  + void write(int value)
+  + void write(double)
+  + void write(char)
+  + void write(boolean) 
+  + void writeln()
+  + void writeln(int )
+  + void writeln(double)
+  + void writeln(char)
+  + void writeln(boolean) 
+}
+
+class UnderlinerConsole extends DecoratorConsole {
+  - char underline;
+  + UnderlinerConsole(char underline, ConsoleInterface console)
+  + void write(String string)
+  - String getUnderlines(String)
+  - String getUnderline(String)
+  + void writeln(String string) 
+}
+
+
+class CenterConsole extends DecoratorConsole  {
+  - int width;
+  + CenterConsole(int width, ConsoleInterface console)
+  + void write(String string) 
+  - String getCenteredLines(String string) 
+  - String getCenteredLine(String string)
+  + void writeln(String string) 
+}
+
+@enduml

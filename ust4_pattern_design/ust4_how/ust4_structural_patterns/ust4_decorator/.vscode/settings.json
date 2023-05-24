@@ -1,0 +1,11 @@
+{
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "configurations": [
+    {
+        "type": "java",
+        "request": "launch",
+        "mainClass": "App",
+        "vmArgs": "-enableassertions"
+    }
+]
+}
